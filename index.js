@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 
 const app = express();
@@ -41,6 +41,14 @@ async function run() {
     app.get("/posts", async (req, res) => {
       const postData = textBasedPostCollection.find();
       const result = await postData.toArray();
+      res.send(result);
+    });
+
+    app.get("/posts/:id", async (req, res) => {
+      const id = req.params.id;
+      const result = await textBasedPostCollection.findOne({
+        _id: new ObjectId(id),
+      });
       res.send(result);
     });
   } finally {
