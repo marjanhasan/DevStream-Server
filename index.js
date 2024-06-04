@@ -51,6 +51,13 @@ async function run() {
       });
       res.send(result);
     });
+
+    app.get("/profile/:email", async (req, res) => {
+      const email = req.params.email;
+      const postData = textBasedPostCollection.find({ email: email });
+      const result = await postData.toArray();
+      res.send(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
