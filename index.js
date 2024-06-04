@@ -100,6 +100,17 @@ async function run() {
       const result = await userCollection.findOne({ email: email });
       res.send(result || { message: "NO USER FOUND" });
     });
+
+    app.patch("/user/:email", async (req, res) => {
+      const email = req.params.email;
+      const userData = req.body;
+      const result = await userCollection.updateOne(
+        { email: email },
+        { $set: userData },
+        { upsert: true }
+      );
+      res.send(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
