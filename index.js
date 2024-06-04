@@ -23,6 +23,20 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
+
+    const postDB = client.db("postDB");
+    const textBasedPostCollection = postDB.collection(
+      "textBasedPostCollection"
+    );
+    const userDB = client.db("userDB");
+    const userCollection = userDB.collection("userCollection");
+
+    // ********************** posts routes
+    app.post("/posts", async (req, res) => {
+      const postData = req.body;
+      const result = await textBasedPostCollection.insertOne(postData);
+      res.send(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
