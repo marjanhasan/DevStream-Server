@@ -37,6 +37,12 @@ async function run() {
       const result = await textBasedPostCollection.insertOne(postData);
       res.send(result);
     });
+
+    app.get("/posts", async (req, res) => {
+      const postData = textBasedPostCollection.find();
+      const result = await postData.toArray();
+      res.send(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
