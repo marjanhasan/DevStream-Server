@@ -58,6 +58,16 @@ async function run() {
       const result = await postData.toArray();
       res.send(result);
     });
+
+    app.patch("/posts/:id", async (req, res) => {
+      const id = req.params.id;
+      const postData = req.body;
+      const result = await textBasedPostCollection.updateOne(
+        { _id: new ObjectId(id) },
+        { $set: postData }
+      );
+      res.send(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
