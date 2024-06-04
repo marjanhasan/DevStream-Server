@@ -76,6 +76,24 @@ async function run() {
       });
       res.send(result);
     });
+
+    // ****************** user routes
+
+    app.post("/user", async (req, res) => {
+      const userData = req.body;
+      const isExist = await userCollection.findOne({ email: userData.email });
+      if (isExist) {
+        return res.send({ message: "Login Successfull" });
+      }
+      const result = await userCollection.insertOne(userData);
+      res.send(result);
+    });
+
+    app.get("/user", async (req, res) => {
+      const userData = userCollection.find();
+      const result = await userData.toArray();
+      res.send(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
