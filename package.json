@@ -1,0 +1,44 @@
+{
+  "name": "devstream-server",
+  "version": "1.0.0",
+  "description": "Server side code of a social media app which is made for developers.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "social media",
+    "developer",
+    "coding",
+    "programming",
+    "video streaming",
+    "live streaming",
+    "course",
+    "education",
+    "tech community",
+    "developer community",
+    "tech",
+    "code sharing",
+    "project showcase",
+    "chat",
+    "follow",
+    "like",
+    "comment",
+    "friend list",
+    "knowledge sharing"
+  ],
+  "author": "Marjan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.7.0"
+  }
+}
