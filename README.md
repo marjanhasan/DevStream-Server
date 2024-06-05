@@ -4,7 +4,7 @@ This is the server-side code for DevStream, a social media platform designed for
 
 ## Live Domain
 
-The server is live at: [https://dev-stream-server.vercel.app/](https://dev-stream-server.vercel.app/)
+The server is live at: [https://devstream-server.onrender.com/posts/](https://devstream-server.onrender.com/posts/)
 
 ## Features
 
